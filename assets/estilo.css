@@ -80,10 +80,11 @@ h3.secao { font-size: 13px; text-transform: uppercase; letter-spacing: .1em; col
 .rodape a { color: var(--cor); }
 .busca { display: flex; gap: 8px; margin-top: 14px; }
 .busca input {
-  flex: 1; padding: 14px; font-size: 17px; border-radius: 12px;
+  flex: 1 1 auto; min-width: 0; padding: 14px; font-size: 17px; border-radius: 12px;
   border: 1px solid var(--borda); background: var(--cartao); color: var(--texto);
 }
 .busca button {
+  flex: none; white-space: nowrap;
   padding: 14px 20px; font-size: 16px; font-weight: 600; border: 0;
   border-radius: 12px; background: var(--cor); color: #fff;
 }
