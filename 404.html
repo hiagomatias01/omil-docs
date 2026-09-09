@@ -1,0 +1,45 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b5fff">
+<title>Máquina não encontrada - OMIL</title>
+<link rel="stylesheet" href="/omil-docs/assets/estilo.css">
+<header class="topo">
+  <div class="envolucro" style="padding-bottom:0">
+    <div class="empresa">OMIL</div>
+    <h1>Máquina não encontrada</h1>
+  </div>
+</header>
+<main class="envolucro">
+  <section class="cartao">
+    <p id="mensagem" style="margin-top:0">Este endereço não corresponde a nenhuma máquina cadastrada.</p>
+    <form class="busca" onsubmit="return irParaMaquina(event)">
+      <input id="numero" placeholder="Número da máquina" aria-label="Número da máquina" required>
+      <button type="submit">Procurar</button>
+    </form>
+  </section>
+  <p class="rodape">OMIL &middot; Assistência técnica</p>
+</main>
+<script>
+var BASE = "/omil-docs/";
+var partes = window.location.pathname.split("/m/");
+if (partes.length > 1) {
+  var codigo = partes[1].split("/")[0].replace(/[<>&"']/g, "");
+  if (codigo) {
+    document.getElementById("mensagem").innerHTML =
+      "Os documentos da máquina <strong>" + codigo +
+      "</strong> ainda não foram publicados. Fale com a assistência técnica.";
+    document.getElementById("numero").value = codigo;
+  }
+}
+function normalizar(valor) {
+  return String(valor || "").toLowerCase().normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+/, "").replace(/-+$/, "");
+}
+function irParaMaquina(evento) {
+  evento.preventDefault();
+  var slug = normalizar(document.getElementById("numero").value);
+  if (slug) { window.location.href = BASE + "m/" + slug + "/"; }
+  return false;
+}
+</script>
