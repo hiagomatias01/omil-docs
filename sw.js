@@ -1,5 +1,5 @@
-// Cache offline - versao 959bb725ea8c
-var CACHE = "qrdocs-959bb725ea8c";
+// Cache offline - versao e8ff6ec4a7c0
+var CACHE = "qrdocs-e8ff6ec4a7c0";
 
 self.addEventListener("install", function () {
   self.skipWaiting();
